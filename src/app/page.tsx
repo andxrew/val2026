@@ -611,7 +611,7 @@ export default function Home() {
 									</a>
 
 									<div className="pt-1 text-sm text-slate-600 dark:text-zinc-400">
-										Today’s the day. Be ready 9pm. 🖤
+										Today’s the day. Be ready 9pm. 💞
 									</div>
 								</div>
 							)}
