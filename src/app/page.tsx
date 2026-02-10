@@ -624,11 +624,11 @@ export default function Home() {
 							Restart
 						</button>
 
-						{forceUnlock && (
+						{/* {forceUnlock && (
 							<p className="mt-3 text-xs text-slate-500 dark:text-zinc-500">
 								Dev preview enabled: ?unlock=1
 							</p>
-						)}
+						)} */}
 						<p className="mt-3 text-xs text-slate-500 dark:text-zinc-500">
 							Built with 💖 by Drew.
 						</p>
