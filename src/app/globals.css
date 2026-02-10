@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
+/* Use class-based dark mode so the toggle can switch themes. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark theme variables when .dark is present on <html> */
+:root.dark {
+	--background: #0a0a0a;
+	--foreground: #ededed;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
 }
+
+.flip-wrap {
+	perspective: 900px;
+	transform-style: preserve-3d;
+}
+
+.flip-top,
+.flip-bottom {
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	will-change: transform;
+}
+
+.flip-top {
+	animation: flipTop 520ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.flip-bottom {
+	animation: flipBottom 520ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes flipTop {
+	0% {
+		transform: rotateX(0deg);
+	}
+	100% {
+		transform: rotateX(-90deg);
+	}
+}
+
+@keyframes flipBottom {
+	0% {
+		transform: rotateX(90deg);
+	}
+	100% {
+		transform: rotateX(0deg);
+	}
+}
+
+.slide-out {
+	animation: slideOutUp 320ms ease-out forwards;
+}
+
+.slide-in {
+	animation: slideInUp 160ms ease-out forwards;
+}
+
+@keyframes slideOutUp {
+	from {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+	to {
+		transform: translateY(-35%);
+		opacity: 0;
+	}
+}
+@keyframes gradientMove {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* @keyframes slideInUp {
+	from {
+		transform: translateY(35%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+} */
